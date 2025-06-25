@@ -98,12 +98,6 @@ const AdminLogin = () => {
               )}
             </Button>
           </form>
-
-          <div className="mt-6 p-4 bg-gray-50 rounded-lg">
-            <h4 className="text-sm font-medium text-gray-700 mb-2">Demo Credentials:</h4>
-            <p className="text-xs text-gray-600">Email: admin@company.com</p>
-            <p className="text-xs text-gray-600">Password: admin123</p>
-          </div>
         </CardContent>
       </Card>
     </div>
