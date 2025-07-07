@@ -31,7 +31,7 @@ import {
 import { ICompany } from '@/types/api';
 import { useToast } from '@/hooks/use-toast';
 import { useConfirmDialog } from "@/hooks/use-confirm-dialog.tsx";
-import {AxiosError} from "axios";
+import { AxiosError } from "axios";
 import CompanyDefaultUserForm from "@/components/CompanyDefaultUserForm.tsx";
 
 const CompanyList = () => {
@@ -82,20 +82,20 @@ const CompanyList = () => {
   };
 
   const handleDelete = async (uuid: string) => {
-    try{
+    try {
       const res = await deleteCompany(uuid);
 
-      if (res.status === 'success'){
+      if (res.status === 'success') {
         toast({
           title: "Success",
           description: "Company deleted successfully",
         });
         handleReload();
       }
-    }catch (err: unknown){
+    } catch (err: unknown) {
       const error = err as AxiosError<{ error: { message: string } }>;
 
-      if (error?.response?.data){
+      if (error?.response?.data) {
         toast({
           title: "Error",
           description: error?.response?.data?.error?.message ?? 'Something went wrong',
@@ -106,20 +106,20 @@ const CompanyList = () => {
   };
 
   const handleApprove = async (uuid: string) => {
-    try{
+    try {
       const res = await updateStatusCompany(uuid, "approved");
 
-      if (res.status === 'success'){
+      if (res.status === 'success') {
         toast({
           title: "Success",
           description: "Company approved successfully",
         });
         handleReload();
       }
-    }catch (err: unknown){
+    } catch (err: unknown) {
       const error = err as AxiosError<{ error: { message: string } }>;
 
-      if (error?.response?.data){
+      if (error?.response?.data) {
         toast({
           title: "Error",
           description: error?.response?.data?.error?.message ?? 'Something went wrong',
@@ -137,10 +137,10 @@ const CompanyList = () => {
 
   const handleRejectSubmit = async () => {
     if (selectedCompany && rejectionReason.trim()) {
-      try{
+      try {
         const res = await updateStatusCompany(selectedCompany.uuid, "rejected", rejectionReason);
 
-        if (res.status === 'success'){
+        if (res.status === 'success') {
           toast({
             title: "Success",
             description: "Company rejected successfully",
@@ -150,10 +150,10 @@ const CompanyList = () => {
           setSelectedCompany(null);
           setRejectionReason('');
         }
-      }catch (err: unknown){
+      } catch (err: unknown) {
         const error = err as AxiosError<{ error: { message: string } }>;
 
-        if (error?.response?.data){
+        if (error?.response?.data) {
           toast({
             title: "Error",
             description: error?.response?.data?.error?.message ?? 'Something went wrong',
@@ -236,7 +236,10 @@ const CompanyList = () => {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold text-gray-900">Companies</h1>
+        <div>
+          <h1 className="text-3xl font-bold text-gray-900">Companies</h1>
+          <p className="text-gray-600 mt-2">Manage registered companies</p>
+        </div>
         <Button onClick={handleAdd} className="bg-blue-600 hover:bg-blue-700">
           <Plus className="w-4 h-4 mr-2" />
           Add Company
@@ -297,9 +300,9 @@ const CompanyList = () => {
                       <Edit className="w-4 h-4" />
                     </Button>
                     <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={() => handleDefaultUser(company)}
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => handleDefaultUser(company)}
                     >
                       <Lock className="w-4 h-4" />
                     </Button>
@@ -309,12 +312,12 @@ const CompanyList = () => {
                           variant="ghost"
                           size="sm"
                           onClick={() =>
-                              openDialog(() => handleApprove(company.uuid), {
-                                title: 'Approve this company?',
-                                description: 'Are you sure you want to approve this company? This action can be undone later if needed.',
-                                confirmText: 'Approve',
-                                cancelText: 'Cancel',
-                              })
+                            openDialog(() => handleApprove(company.uuid), {
+                              title: 'Approve this company?',
+                              description: 'Are you sure you want to approve this company? This action can be undone later if needed.',
+                              confirmText: 'Approve',
+                              cancelText: 'Cancel',
+                            })
                           }
                           className="text-green-600 hover:text-green-700"
                         >
@@ -334,12 +337,12 @@ const CompanyList = () => {
                       variant="ghost"
                       size="sm"
                       onClick={() =>
-                          openDialog(() => handleDelete(company.uuid), {
-                            title: 'Delete this company?',
-                            description: 'This action will permanently remove the company and cannot be undone.',
-                            confirmText: 'Delete',
-                            cancelText: 'Cancel',
-                          })
+                        openDialog(() => handleDelete(company.uuid), {
+                          title: 'Delete this company?',
+                          description: 'This action will permanently remove the company and cannot be undone.',
+                          confirmText: 'Delete',
+                          cancelText: 'Cancel',
+                        })
                       }
                       className="text-red-600 hover:text-red-700"
                     >

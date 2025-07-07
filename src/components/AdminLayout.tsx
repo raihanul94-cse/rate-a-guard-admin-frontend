@@ -1,14 +1,16 @@
 
 import React from 'react';
 import { Link, useLocation, Outlet } from 'react-router-dom';
-import { Building2, Users, Key, LogOut } from 'lucide-react';
+import { Building2, Users, Key, LogOut, Mail, UserPlus } from 'lucide-react';
 
 const AdminLayout = () => {
   const location = useLocation();
 
   const navItems = [
     { path: '/admin/companies', label: 'Companies', icon: Building2 },
+    { path: '/admin/email-change', label: 'Change Email', icon: Mail },
     { path: '/admin/password-change', label: 'Change Password', icon: Key },
+    { path: '/admin/team-members', label: 'Team Members', icon: UserPlus },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -16,7 +18,7 @@ const AdminLayout = () => {
   return (
     <div className="min-h-screen bg-gray-50 flex">
       <div className="w-64 bg-white shadow-lg">
-        <div className="p-6 border-b">
+        <div className="p-4 border-b pb-5">
           <h1 className="text-xl font-bold text-gray-800 flex items-center gap-2">
             <Users className="w-6 h-6 text-blue-600" />
             RAG Admin
@@ -42,7 +44,7 @@ const AdminLayout = () => {
           })}
         </nav>
 
-        <div className="absolute bottom-0 w-64 p-6 border-t">
+        <div className="absolute bottom-0 w-64 p-3 border-t">
           <Link
             to="/admin/login"
             className="flex items-center gap-3 px-4 py-2 text-sm font-medium text-red-600 hover:bg-red-50 rounded-lg transition-colors"

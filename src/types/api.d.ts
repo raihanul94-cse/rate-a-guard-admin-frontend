@@ -48,3 +48,11 @@ interface IAuthTokens {
 export interface ILoginResponseData {
   authTokens: IAuthTokens;
 }
+
+export interface ITeamMember {
+  uuid?: string;
+  emailAddress?: string;
+  status?: string;
+  code?: string;
+  password?: string;
+}

@@ -12,7 +12,7 @@ interface CompanyDetailsProps {
 const CompanyDetails = ({ company }: CompanyDetailsProps) => {
   return (
     <div className="space-y-6">
-      <ScrollArea className="h-[220px] w-full overflow-hidden">
+      <ScrollArea className="w-full overflow-hidden">
         <div className="space-y-6">
           <Card>
             <CardHeader>
@@ -94,7 +94,7 @@ const CompanyDetails = ({ company }: CompanyDetailsProps) => {
         </div>
         <ScrollBar
           orientation="vertical"
-          className="flex select-none touch-none p-0.5 bg-gray-100 transition-colors duration-[160ms] ease-out hover:bg-gray-200"
+          className="flex select-none touch-none p-0.5 bg-gray-100 transition-colors ease-out hover:bg-gray-200"
         />
       </ScrollArea>
     </div>
