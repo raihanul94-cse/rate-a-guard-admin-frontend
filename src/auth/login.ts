@@ -28,7 +28,7 @@ export async function login(
     return true;
   } catch (error) {
     const err = error as AxiosError;
-    console.error("Login failed:", err.response?.data || err.message);
+    console.log("Login failed:", err.response?.data || err.message);
     return false;
   }
 }
